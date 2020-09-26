@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/Developer/Jquery/jquery-ui.css" />
+    <script src="/Developer/Jquery/external/jquery/jquery.js"></script>
+    <script src="/Developer/Jquery/jquery-ui.js"></script>
+
+    <script type="text/javascript">
+      var disabledTool = new Date('September 2, 2020');
+      var fecha = new Date();
+      fecha.setHours(0, 0, 0, 0);
+    //   disabledTool.setDate(disabledTool.getDate() );
+      disabledTool.setHours(0, 0, 0, 0);
+
+      $(function () {
+        $("#datepicker").datepicker({
+          beforeShowDay: function (date) {
+            var tooltipDate = "This date is DISABLED!!";
+
+            // document.write(date.prototype.getDate);
+
+            // if (date.getTime() == disabledTool.getTime()) {
+            if (date.getTime() == disabledTool.getTime()) {
+              return [false, "redday", tooltipDate];
+            } else {
+              return [true, "", ""];
+            }
+          },
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <script>
+      document.write("Probando Javascript  ");
+    //   document.write("<br>");      
+      document.write(fecha.getTime());
+      document.write("<br>");
+      document.write("Segundo ");
+      document.write(disabledTool.getTime());
+      document.write("<br>");
+      document.write(" intermedio ");
+    </script>
+
+    <p>
+      date<input type="text" id="datepicker"/></p>
+    </p>
+  </body>
+</html>
